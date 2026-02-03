@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neon Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fedd98 /* Floral White */
+    }
+    .container {
+      background: White;
+      padding: 25px;
+      border-radius: 20px;
+      width: 350px;
+      box-shadow: 0 35px 60px rgba(0,0,0,0.4);
+    }
+
+    .calculator {
+      background: #000;
+      padding: 25px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 35px 60px rgba(0,0,0,0.4);
+    }
+    .title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: #00fff0;
+  text-shadow: 
+    0 0 5px #00fff0,
+    0 0 10px #00fff0,
+    0 0 20px rgba(0,255,240,0.8);
+}
+
+
+    #inputBox {
+      width: 100%;
+      height: 60px;
+      font-size: 26px;
+      text-align: right;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      background: #111;
+      color: #00fff0; /* neon cyan */
+      box-shadow: inset 0 0 12px rgba(0,255,240,0.8);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      height: 55px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #111;
+      color: #fff;
+      transition: 0.2s ease;
+      box-shadow: 0 0 6px rgba(0,255,255,0.2);
+      font-weight: 800;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 15px currentColor;
+    }
+
+    /* Neon colors */
+    .number {
+      color: #00fff0; /* cyan */
+    }
+
+    .operator {
+      color: #7c7cff; /* neon blue-violet */
+      box-shadow: 0 0 10px rgba(124,124,255,0.8);
+    }
+
+    .equal {
+      grid-column: span 2;
+      color: #00ff9c; /* neon mint green */
+      font-weight: bold;
+      box-shadow: 0 0 12px rgba(0,255,156,0.9);
+    }
+
+    .ac {
+      color: #ff4d4d; /* neon red */
+      box-shadow: 0 0 12px rgba(255,77,77,0.9);
+    }
+  </style>
+  <!-- Open Graph Meta Tags -->
+<meta property="og:title" content="QUANTUM CALC - Neon Cyber Calculator" />
+<meta property="og:description" content="A futuristic neon calculator built using HTML, CSS and JavaScript." />
+<meta property="og:image" content="https://himanshudeba143.github.io/Quantum-Calc/calc.png" />
+<meta property="og:url" content="https://himanshudeba143.github.io/Quantum-Calc/" />
+<meta property="og:type" content="website" />
+
+</head>
+<body>
+  
+<div class = "container">
+  <div class="calculator">
+    <div class="title">QUANTUM CALC</div>
+    <input type="text" id="inputBox" placeholder="0" readonly>
+
+    <div class="buttons">
+      <button class="ac">AC</button>
+      <button class="operator">DEL</button>
+      <button class="operator">%</button>
+      <button class="operator">/</button>
+
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <button class="operator">*</button>
+
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <button class="operator">-</button>
+
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <button class="operator">+</button>
+
+      <button class="number">0</button>
+      <button class="number">.</button>
+      <button class="equal">=</button>
+    </div>
+  </div>
+</div>
+  <script>
+    let input = document.getElementById("inputBox");
+let buttons = document.querySelectorAll("button");
+
+let string = "";
+
+let arr = Array.from(buttons);
+
+arr.forEach(btn => {
+  btn.addEventListener("click", (e)=>{
+    
+    if(e.target.innerHTML == "="){
+      string = eval(string);
+      input.value = string;
+    }
+    
+    else if (e.target.innerHTML == "AC"){
+      string = "";
+      input.value = string;
+    }
+    
+    else if (e.target.innerHTML == "DEL"){
+      string = string.substring(0 , string.length - 1);
+      input.value = string;
+    }
+    
+    else {
+      string = string + e.target.innerHTML ;
+      input.value  = string;
+    }
+    
+  })
+})
+  </script>
+  
+</body>
+</html>
